@@ -1,0 +1,9 @@
+def remove_duplicates(listik):
+    res = []
+    for i in listik:
+        if i not in res:
+            res.append(i)
+    return res
+
+print(remove_duplicates(['l','i','s','t','i','k']))      
+print(remove_duplicates([1,1,1,2,0,2]))
