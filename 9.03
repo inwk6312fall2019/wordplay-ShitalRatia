@@ -1,0 +1,122 @@
+def characterCount():
+    fin = open("words.txt")
+    for line in fin:
+        words = line.strip()
+        if len(words) > 19:
+            print(words)
+def has_no_e_one():
+    fin = open('words.txt')
+    for line in fin:
+        if line.find("e") == -1:
+            return("True")
+def has_no_e():
+    fin = open("words.txt")
+    number_of_words = 0
+    count = 0
+    for line in fin:
+        number_of_words = number_of_words + 1
+        words = line.strip()
+        if words.find("e") == -1:
+            print(words)
+            count = count + 1
+    percent_of_words = (count/number_of_words) * 100
+    print("Percent:", percent_of_words)
+def avoids(word, stringHere):
+    for letters in word:
+        if stringHere in word:
+            return False
+    return True
+def avoids_forbidden():
+    user_input = input("Enter a string of forbidden letters!")
+    fin = open("words.txt")
+    count = 0
+    for line in fin:
+        words = line.strip()
+        if user_input not in words:
+            count = count + 1
+    print(count)
+def uses_only(word,string_of_letters):
+    for letter in word:
+        if letter not in string_of_letters:
+            return False
+    return True
+def uses_all(word, required_letters):
+    for letter in required_letters:
+        if letter not in word:
+            return False
+    return True
+def is_abcedarian(word):
+    i = 0
+    while i < len(word) - 1:
+        if word[i] > word[i + 1]:
+            return False
+        i = i + 1
+    return True
+def is_double(word):
+    i = 0
+    count = 0
+    while i < len(word) - 1:
+        if word[i] == word[i+1]:
+            count = count + 1
+        i = i + 2
+    if count == 3:
+        return True
+
+
+def find_double_words():
+    fin = open("words.txt")
+    for line in fin:
+        word = line.strip()
+        if is_double(word):
+            print(word)
+def is_palidrome(num, start):
+    numString = str(num)
+    i = start
+    j = len(numString) - 1
+    count = 0
+    while i <= j:
+        if numString[i] == numString[j]:
+             print(numString)
+        else:
+             return False
+        i = i + 1
+        j = j - 1
+def is_palidrome_ex(num):
+    numString = str(num)
+    if numString[::-1] == numString:
+        return True
+
+def car_talk_paldromes(num):
+    numString = str(num)
+    if is_palidrome_ex(num):
+        print(num)
+    new_num = numString[2::]
+    if is_palidrome_ex(new_num):
+        print(num)
+    new_num = numString[1:6]
+    if is_palidrome_ex(new_num):
+        print(num)
+    new_num = numString[1:5:]
+    if is_palidrome_ex(new_num):
+        print(num)
+def is_palidrome(motherAge, daughterAge):
+    motherAge = str(motherAge)
+    daughterAge = str(daughterAge)
+    difference = len(motherAge) - len(daughterAge)
+    daughterAge = daughterAge.zfill(len(motherAge))
+    motherAge = motherAge[::-1]
+    if motherAge == daughterAge:
+        return True
+    else:
+        return False
+count = 0
+previousDiffAge = 0
+for motherAge in range (15, 120):
+    for daughterAge in range(1, 100):
+        diffAge = motherAge - daughterAge
+        if is_palidrome(motherAge, daughterAge) and diffAge == previousDiffAge:
+            count = count + 1
+            if count == 6:
+                print(motherAge)
+                print(daugtherAge)
+    previousDiffAge = diffAge
