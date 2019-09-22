@@ -1,0 +1,28 @@
+import time
+
+def build_list1():
+    fin = open('words.txt')
+    list1 = []
+    for line in fin:
+        word = line.strip()
+        list1.append(word)
+    return list1   
+
+def build_list2():
+    fin = open('words.txt')
+    list2 = []
+    for line in fin:
+        word = line.strip()
+        list2 = list2 + [word]
+    return list2        
+
+start_time = time.time()
+build_list1()
+function_time1 = time.time() - start_time
+
+start_time = time.time()
+build_list2()
+function_time2 = time.time() - start_time
+
+print(function_time1) 
+print(function_time2)
